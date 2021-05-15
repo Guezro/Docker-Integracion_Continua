@@ -11,14 +11,11 @@ pipeline {
                 sh 'python --version' 
             }
         }
-        stage('Test'){
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
+        stage('TestApp'){
             steps {
-                sh 'mvn test'
+                sh '''
+                    bash -c "source $
+                '''
             }
         }
     }
