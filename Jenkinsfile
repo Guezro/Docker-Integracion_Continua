@@ -22,21 +22,12 @@ pipeline {
                 sh 'python3 src/operaciones.py'
             }
         }
-        stage('BuildDocker'){
+        stage('BuildDOcker'){
             steps {
                 sh 'docker build -t myjenkins-blueocean:1.1 .'
             }
         }
-        stage('PushDockerImage'){
-            steps {
-                sh '''
-                docker tag myjenkins-blueocean:1.1 prueba/myjenkins-blueocean:1.1
-                                docker push prueba1/myjenkins-blueocean:1.1
-                                docker rmi myjenkins-blueocean:1.1
-                
-                '''
-            }
-        }
+
     }
     triggers {
         githubPush() 
