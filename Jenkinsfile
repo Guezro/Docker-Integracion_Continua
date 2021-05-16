@@ -18,6 +18,13 @@ pipeline {
                 '''
             }
         }
+        stage('RunApp'){
+            steps {
+                sh '''
+                    python3 src/operaciones.py 
+                '''
+            }
+        }
     }
     triggers {
         githubPush()
