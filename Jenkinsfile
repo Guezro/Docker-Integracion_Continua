@@ -24,15 +24,15 @@ pipeline {
         }
         stage('BuildDocker'){
             steps {
-                sh 'docker build -t apptest:latest .'
+                sh 'docker build -t myjenkins-blueocean:1.1 .'
             }
         }
         stage('PushDockerImage'){
             steps {
                 sh '''
-                docker tag apptest:latest prueba/apptest:latest
-                                docker push prueba/apptest:latest
-                                docker rmi apptest:latest
+                docker tag myjenkins-blueocean:1.1 prueba/myjenkins-blueocean:1.1
+                                docker push prueba/myjenkins-blueocean:1.1
+                                docker rmi myjenkins-blueocean:1.1
                 
                 '''
             }
