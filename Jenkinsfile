@@ -1,32 +1,18 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.8.5' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
+
     stages {
-        stage('Build') { 
+        stage('Input') {
             steps {
-                sh 'python --version' 
+                input('Do you want to proceed?')
             }
         }
-        stage('TestApp'){
+
+        stage('If Proceed is clicked') {
             steps {
-                sh '''
-                    python3 src/test.py -v
-                '''
-            }
-        }
-        stage('RunApp'){
-            steps {
-                sh '''
-                    python3 src/operaciones.py 3 4
-                '''
+                print('hello')
             }
         }
     }
-    triggers {
-        githubPush()
-    }
+}
 }
