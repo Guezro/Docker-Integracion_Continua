@@ -14,7 +14,7 @@ pipeline {
         stage('TestApp'){
             steps {
                 sh '''
-                    bash -c "source $
+                    python3 test.py
                 '''
             }
         }
