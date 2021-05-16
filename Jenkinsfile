@@ -21,7 +21,7 @@ pipeline {
         stage('RunApp'){
             steps {
                 sh '''
-                    python3 src/operaciones.py 3 4
+                    python3 src/operaciones.py
                 '''
             }
         }
