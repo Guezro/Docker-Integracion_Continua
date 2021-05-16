@@ -7,7 +7,7 @@ class TestOperaciones(unittest.TestCase):
         pass
 
     def test_suma(self):
-        esperado = 2
+        esperado = 3
         actual = suma(1,2)
         self.assertEqual(actual,esperado)
 
