@@ -13,9 +13,13 @@ pipeline {
         }
         stage('TestApp'){
             steps {
-                sh 'python3 src/test.py -v'
-              
+                sh 'python3 src/test.py -v'      
             }
+        post {
+            always {
+                junit 'target/surefire-reports/*.xml' 
+            }
+        }
         }
         stage('RunApp'){
             steps {
