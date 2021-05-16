@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                 docker tag myjenkins-blueocean:1.1 prueba/myjenkins-blueocean:1.1
-                                docker push prueba/myjenkins-blueocean:1.1
+                                docker push prueba1/myjenkins-blueocean:1.1
                                 docker rmi myjenkins-blueocean:1.1
                 
                 '''
