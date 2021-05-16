@@ -13,16 +13,13 @@ pipeline {
         }
         stage('TestApp'){
             steps {
-                sh '''
-                    python3 src/test.py -v
-                '''
+                sh 'python3 src/test.py -v'
+              
             }
         }
         stage('RunApp'){
             steps {
-                sh '''
-                    python3 src/operaciones.py
-                '''
+                sh 'python3 src/operaciones.py'
             }
         }
     }
