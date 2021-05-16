@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { sadad
+        docker {
             image 'python:3.8.5' 
             args '-v /root/.m2:/root/.m2' 
         }
