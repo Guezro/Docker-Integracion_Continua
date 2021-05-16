@@ -14,7 +14,7 @@ pipeline {
         stage('TestApp'){
             steps {
                 sh '''
-                    python3 src/test.py
+                    python3 src/test.py -v
                 '''
             }
         }
