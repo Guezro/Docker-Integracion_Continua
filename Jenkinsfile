@@ -27,6 +27,6 @@ pipeline {
         }
     }
     triggers {
-        githubPush()
+        githubPush() 
     }
 }
