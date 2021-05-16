@@ -22,6 +22,21 @@ pipeline {
                 sh 'python3 src/operaciones.py'
             }
         }
+        stage('BuildDocker'){
+            steps {
+                sh 'docker build -t apptest:latest .'
+            }
+        }
+        stage('PushDockerImage'){
+            steps {
+                sh '''
+                docker tag apptest:latest prueba/apptest:latest
+                                docker push prueba/apptest:latest
+                                docker rmi apptest:latest
+                
+                '''
+            }
+        }
     }
     triggers {
         githubPush() 
