@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'bash -c "virtualenv entorno_virtual && source entorno_virtual/bin/activate"'
+               sh '. .env/bin/activate'
                 sh 'python --version' 
-                sh 'pip install -r requirements.txt'
+                sh 'pip install xmlrunner'
             }
         }
         stage('TestApp'){
