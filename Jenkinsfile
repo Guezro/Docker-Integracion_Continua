@@ -1,36 +1,30 @@
 pipeline {
-    agent none 
+    agent {
+        docker {
+            image 'python:3.8.5' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
     stages {
         stage('Build') { 
-            agent {
-                docker {
-                    image 'python:2-alpine' 
-                }
-            }
             steps {
-                sh 'python -m py_compile src/operaciones.py' 
-                stash(name: 'compiled-results', includes: 'src/*.py*') 
+                sh 'python --version' 
             }
         }
-        stage('Deliver') { 
-            agent any
-            environment { 
-                VOLUME = '$(pwd)/src:/src'
-                IMAGE = 'cdrx/pyinstaller-linux:python2'
-            }
+        stage('TestApp'){
             steps {
-                dir(path: env.BUILD_ID) { 
-                    unstash(name: 'compiled-results') 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F operaciones.py'" 
-                }
+                sh 'python3 src/test.py -v'      
             }
-            post {
-                success {
-                    archiveArtifacts "${env.BUILD_ID}/src/dist/operaciones" 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-                }
+
+        }
+        stage('RunApp'){
+            steps {
+                sh 'python3 src/operaciones.py'
             }
         }
-        
+
+    }
+    triggers {
+        githubPush() 
     }
 }
