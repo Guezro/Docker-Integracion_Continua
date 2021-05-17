@@ -14,7 +14,7 @@ pipeline {
         stage('TestApp'){
             steps {
                 sh '''
-                pip install unittest-xml-reporting
+                pip install -r unittest-xml-reporting
                 python3 src/test.py -v
                 '''      
             }
