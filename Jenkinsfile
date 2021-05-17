@@ -15,7 +15,7 @@ pipeline {
         }
         stage('TestApp'){
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install unittest-xml-reporting'
+                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner'
                 sh 'python src/test.py -v'     
             }
 
