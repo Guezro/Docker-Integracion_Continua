@@ -24,4 +24,4 @@ docker build -t myjenkins-blueocean:1.1 .
   gem install ultrahook
 
   #Ejecutar ultrahook
-  
+  ultrahook -k 6wn2B3y73xYDgKAI8vrygs1D9JeYubHc myapp http://localhost:8080/github-webhook/
