@@ -9,13 +9,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'python --version' 
-                sh '''
-                pip install virtualenv
-                virtualenv enviroment_name -p python3
-                source enviroment_name/bin/activate
-                pip install xmlrunner 
-                
-                '''
+                sh 'virtualenv venv && . venv/bin/activate && pip install -r unittest-xml-reporting'
             }
         }
         stage('TestApp'){
