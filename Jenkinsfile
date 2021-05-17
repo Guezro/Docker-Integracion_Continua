@@ -1,23 +1,30 @@
 pipeline {
-    agent none 
+    agent {
+        docker {
+            image 'python:3.8.5' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
     stages {
         stage('Build') { 
-            agent {
-                docker {
-                    image 'python:2-alpine' 
-                }
-            }
             steps {
-                sh 'python -m py_compile src/operaciones.py' 
-                stash(name: 'compiled-results', includes: 'src/*.py*') 
+                sh 'python --version' 
             }
         }
-        stage('Test') {
+        stage('TestApp'){
+            steps {
+                sh 'python3 src/test.py -v'      
+            }
 
-            steps {
-                sh 'python -m py_compile src/test.py'
-            }
-          
         }
+        stage('RunApp'){
+            steps {
+                sh 'python3 src/operaciones.py'
+            }
+        }
+
+    }
+    triggers {
+        githubPush() 
     }
 }
