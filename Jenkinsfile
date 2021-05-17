@@ -1,30 +1,53 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.8.5' 
-            args '-v /root/.m2:/root/.m2' 
-        }
+    agent none
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
-        stage('Build') { 
+        stage('Build') {
+            agent {
+                docker {
+                    image 'python:2-alpine'
+                }
+            }
             steps {
-                sh 'python --version' 
+                sh 'python -m scr/operaciones.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
-        stage('TestApp'){
-            steps {
-                sh 'python3 src/test.py -v'      
+        stage('Test') {
+            agent {
+                docker {
+                    image 'qnib/pytest'
+                }
             }
-
-        }
-        stage('RunApp'){
             steps {
-                sh 'python3 src/operaciones.py'
+                sh 'py.test --junit-xml test-reports/results.xml src/test.py'
+            }
+            post {
+                always {
+                    junit 'test-reports/results.xml'
+                }
             }
         }
-
-    }
-    triggers {
-        githubPush() 
+        stage('Deliver') { 
+            agent any
+            environment { 
+                VOLUME = '$(pwd)/sources:/src'
+                IMAGE = 'cdrx/pyinstaller-linux:python2'
+            }
+            steps {
+                dir(path: env.BUILD_ID) { 
+                    unstash(name: 'compiled-results') 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+                }
+            }
+        }
     }
 }
