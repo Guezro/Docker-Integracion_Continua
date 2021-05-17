@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.8.5' 
-           
+            
+            image 'qnib/pytest'
             args '-v /root/.m2:/root/.m2' 
         }
     }
@@ -16,13 +16,13 @@ pipeline {
         stage('TestApp'){
             steps {
                 
-                sh 'python3 src/test.py -v'     
+                sh 'python src/test.py -v'     
             }
 
         }
         stage('RunApp'){
             steps {
-                sh 'python3 src/operaciones.py'
+                sh 'python src/operaciones.py'
             }
         }
 
