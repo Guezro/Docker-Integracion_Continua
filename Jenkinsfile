@@ -15,13 +15,9 @@ pipeline {
         stage('Test') {
 
             steps {
-                sh 'python -m py_compile src/test.py --junit-xml test-reports/results.xml'
+                sh 'python -m py_compile src/test.py'
             }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
-            }
+          
         }
     }
 }
