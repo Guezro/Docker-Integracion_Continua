@@ -9,11 +9,12 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'python --version' 
+                sh 'pip install -r unittest-xml-reporting'
             }
         }
         stage('TestApp'){
             steps {
-                sh 'pip install -r unittest-xml-reporting'
+                
                 sh 'python3 src/test.py -v'     
             }
 
