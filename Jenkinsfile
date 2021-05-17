@@ -10,9 +10,10 @@ pipeline {
             steps {
                 sh 'python --version' 
                 sh '''
+                pip install virtualenv
                 virtualenv enviroment_name -p python3
                 source enviroment_name/bin/activate
-                pip3 install xmlrunner --user
+                pip install xmlrunner 
                 
                 '''
             }
