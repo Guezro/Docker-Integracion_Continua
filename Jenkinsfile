@@ -12,5 +12,16 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'src/*.py*') 
             }
         }
+        stage('Test') {
+
+            steps {
+                sh 'python -m py_compile src/test.py --junit-xml test-reports/results.xml'
+            }
+            post {
+                always {
+                    junit 'test-reports/results.xml'
+                }
+            }
+        }
     }
 }
