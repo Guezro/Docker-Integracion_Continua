@@ -18,7 +18,7 @@ class TestOperaciones(unittest.TestCase):
         self.assertEqual(actual,esperado)
 
     def test_multiplicacion(self):
-        esperado = 2
+        esperado = 3
         actual = multiplicacion(1,2)
         self.assertEqual(actual,esperado)
 
