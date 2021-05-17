@@ -22,11 +22,6 @@ pipeline {
                 sh 'python3 src/operaciones.py'
             }
         }
-        stage('BuildDOcker'){
-            steps {
-                sh 'docker build -t myjenkins-blueocean:1.1 .'
-            }
-        }
 
     }
     triggers {
