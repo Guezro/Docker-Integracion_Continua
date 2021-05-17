@@ -1,5 +1,5 @@
 import unittest
-import xmlrunner
+from unittest import xmlrunner
 
 from operaciones import *
 
