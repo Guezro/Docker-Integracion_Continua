@@ -8,8 +8,10 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-
+                sh 'python3 -m venv env'
+                sh 'source ./env/bin/activate' 
                 sh 'python --version' 
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('TestApp'){
