@@ -10,12 +10,12 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'python --version' 
-                sh 'virtualenv venv && . venv/bin/activate && pip install unittest-xml-reporting'
+                
             }
         }
         stage('TestApp'){
             steps {
-                
+                sh 'virtualenv venv && . venv/bin/activate && pip install unittest-xml-reporting'
                 sh 'python src/test.py -v'     
             }
 
