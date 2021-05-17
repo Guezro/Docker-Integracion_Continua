@@ -9,7 +9,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'python --version' 
-                sh 'sudo pip3 install xmlrunner'
+                sh 'pip3 install xmlrunner --user'
             }
         }
         stage('TestApp'){
