@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             
-            image 'python:2.7.9'
+            image 'qnib/pytest'
             args '-v /root/.m2:/root/.m2' 
         }
     }
