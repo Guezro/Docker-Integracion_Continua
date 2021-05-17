@@ -15,8 +15,8 @@ pipeline {
         }
         stage('TestApp'){
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner'
-                sh 'python src/test.py -v'     
+                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python src/test.py -v'
+                    
             }
 
         }
