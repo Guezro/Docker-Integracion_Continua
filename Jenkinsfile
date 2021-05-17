@@ -9,7 +9,12 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'python --version' 
-                sh 'pip3 install xmlrunner --user'
+                sh '''
+                virtualenv enviroment_name -p python3
+                source enviroment_name/bin/activate
+                pip3 install xmlrunner --user
+                
+                '''
             }
         }
         stage('TestApp'){
