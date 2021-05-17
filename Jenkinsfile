@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh '/usr/local/bin/python -m pip install --upgrade pip'
+               sh '. .env/bin/activate'
                 sh 'python --version' 
                 sh 'pip install -r unittest-xml-reporting'
             }
