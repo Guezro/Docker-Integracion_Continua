@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-               sh '. .env/bin/activate'
                 sh 'python --version' 
                 sh 'pip install xmlrunner'
             }
