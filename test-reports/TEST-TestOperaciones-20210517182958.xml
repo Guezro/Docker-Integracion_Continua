@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestOperaciones-20210517182958" tests="4" file=".py" time="0.004" timestamp="2021-05-17T18:29:58" failures="0" errors="0" skipped="0">
-	<testcase classname="TestOperaciones" name="test_division" time="0.003" timestamp="2021-05-17T18:29:58" file="src/test.py" line="25"/>
-	<testcase classname="TestOperaciones" name="test_multiplicacion" time="0.000" timestamp="2021-05-17T18:29:58" file="src/test.py" line="20"/>
-	<testcase classname="TestOperaciones" name="test_resta" time="0.000" timestamp="2021-05-17T18:29:58" file="src/test.py" line="15"/>
-	<testcase classname="TestOperaciones" name="test_suma" time="0.000" timestamp="2021-05-17T18:29:58" file="src/test.py" line="10"/>
-</testsuite>
