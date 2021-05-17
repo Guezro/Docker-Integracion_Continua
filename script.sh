@@ -19,3 +19,9 @@ docker build -t myjenkins-blueocean:1.1 .
   --volume jenkins-docker-certs:/certs/client:ro \
   --volume "$HOME":/home \
   myjenkins-blueocean:1.1
+
+  #instalar ultrahook
+  gem install ultrahook
+
+  #Ejecutar ultrahook
+  
