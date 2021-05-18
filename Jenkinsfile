@@ -32,14 +32,7 @@ pipeline {
         
         }
     }
-    /*post { 
-        always { 
-            mail (body: "El pipeline ha finalizado satisfactoriamente. Consulta la información en el siguiente enlace: '${env.BUILD_URL} ${FAILED_STAGE}'", subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
-        }
-        failure { 
-            mail (body: "El pipeline ha terminado con errores en el proceso. Consulta la información en el siguiente enlace: '${env.BUILD_URL} ${FAILED_STAGE}'", subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
-        }
-    }*/
+    
     triggers {
         githubPush() 
     }
