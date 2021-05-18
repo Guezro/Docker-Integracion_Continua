@@ -9,20 +9,20 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'python --version' 
+                sh 'python3 --version' 
                 
             }
         }
         stage('TestApp'){
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python src/test.py -v'
+                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python3 src/test.py -v'
                     
             }
 
         }
         stage('RunApp'){
             steps {
-                sh 'python src/operaciones.py'
+                sh 'python3 src/operaciones.py'
             }
         }
 
