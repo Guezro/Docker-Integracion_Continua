@@ -32,7 +32,7 @@ class TestOperaciones(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='/var/jenkins_home/cker_Integraci_n_Continua_master/test-reports'),
         # these make sure that some options that are not applicable
         # remain hidden from the help menu.
         failfast=False, buffer=False, catchbreak=False)
