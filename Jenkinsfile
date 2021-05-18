@@ -16,7 +16,7 @@ pipeline {
         stage('TestApp'){
             steps {
 
-                sh 'python3 -m pip install --upgrade pip && pip3 install virtualenv && virtualenv -p venv && source venv/bin/activate && pip3 install xmlrunner && python3 src/test.py -v'
+                sh 'pip3 install virtualenv && virtualenv -p venv && source venv/bin/activate && pip3 install xmlrunner && python3 src/test.py -v'
                     
             }
 
