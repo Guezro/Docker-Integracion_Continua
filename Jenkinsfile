@@ -19,6 +19,8 @@ pipeline {
                 sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python src/test.py'
                 script{
                     FAILED_STAGE=env.STAGE_NAME
+                    mail (body: "El pipeline ha finalizado. Consulta la información en el siguiente enlace: '${env.BUILD_URL} ${FAILED_STAGE}'", subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
+           
                 }    
             }
 
