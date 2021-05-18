@@ -1,7 +1,6 @@
 pipeline {
     agent {
         docker {
-            image 'python:2.7.0'
             image 'qnib/pytest:latest'
             args '-v /root/.m2:/root/.m2' 
         }
@@ -15,7 +14,7 @@ pipeline {
         }
         stage('TestApp'){
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python src/test.py -v'
+                sh 'virtualenv venv && . venv/bin/activate && pip install xmlrunner && python -v src/test.py'
                     
             }
 
