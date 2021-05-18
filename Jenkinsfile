@@ -33,7 +33,7 @@ pipeline {
         }
     }
     post { 
-        always { 
+        success { 
             echo 'I will always say Hello again!'
         }
     }
