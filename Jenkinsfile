@@ -25,11 +25,12 @@ pipeline {
             }
         }
         stage('Notify'){
-            steps {
+            success{
+                steps {
                 mail (body: '''El pipeline ha finalizado. Consulta la información en el siguiente enlace: "${env.JOB_NAME}"   "${env.BUILD_NUMBER}"  ${env.BUILD_URL} ${env.RUN_DISPLAY_URL}''', subject: 'Pipeline Finalizado correctamente', to: 'rodriguezromero4@gmail.com')
             }
         }
-
+        }
     }
     triggers {
         githubPush() 
