@@ -34,10 +34,10 @@ pipeline {
     }
     post { 
         always { 
-            mail (body: "El pipeline ha finalizado satisfactoriamente. Consulta la información en el siguiente enlace: '${env.BUILD_URL}'", subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
+            mail (body: "El pipeline ha finalizado satisfactoriamente. Consulta la información en el siguiente enlace: '${env.BUILD_URL}'", subject: "SUCCESSFULLY FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
         }
         failure { 
-            mail (body: "El pipeline ha terminado con errores en el proceso. Consulta la información en el siguiente enlace: '${env.BUILD_URL}'", subject: "FINISHED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
+            mail (body: "El pipeline ha terminado con errores en el proceso. Consulta la información en el siguiente enlace: '${env.BUILD_URL}'", subject: "FINISHED WITH ERRORS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", to: "rodriguezromero4@gmail.com")
         }
     }
     
